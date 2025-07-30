@@ -2,7 +2,7 @@ var express = require('express');  //we require a module of express
 
 var app = express();  // we create an express app
 
-var port = 80;  //8080 is a small unsecured port 
+var port = 8080;  //8080 is a small unsecured port 
 
 app.use(express.static("frontend")); //if the req type is static , the server will search for the res in the 'public' directory
 
