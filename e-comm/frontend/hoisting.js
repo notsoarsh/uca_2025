@@ -80,3 +80,6 @@ function foo(){
         console.log("Function called fool")
     };
 }
+
+//Whenever we execute the code in browser console, its behavior is different
+//In node re , the code is executed as a part of a module
