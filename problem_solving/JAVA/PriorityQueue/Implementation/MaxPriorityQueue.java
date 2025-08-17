@@ -31,9 +31,9 @@ public class MaxPriorityQueue {
   }
 
   private void swim(int k) {
-    while(k > 1 && less(k, k/2)) {
-      exch(k/2, k);
-      k = k/2;
+    while(k > 1 && less(k, k/2)) {  // If k > 1, means k is not root and node is < its parent 
+      exch(k/2, k); //Exchange the two
+      k = k/2; //Child becomes parent
     }
   }
 
