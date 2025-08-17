@@ -45,12 +45,12 @@ public class MaxPriorityQueue {
   }
 
   public void sink(int k) {
-    while(k <= 2*n) {
+    while(2 * K <= n) {
       int j = 2*k;
 
-        if(less(j, j+1)) j++;
-        if(less(j, k)) return;
-        exch(j,k);
+        if(j < n && less(j, j+1)) j++;
+        if(less(k,j)) break;
+        exch(k,j);
         k = j;
     }
   }
