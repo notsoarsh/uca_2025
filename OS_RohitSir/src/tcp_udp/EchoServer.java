@@ -11,17 +11,17 @@ public class EchoServer {
 		ServerSocket server = null;
 		try {
 			server = new ServerSocket(port);
-	                System.out.println("We are able to create the obj for the ServerSocket on the port " + port);
+	        System.out.println("We are able to create the obj for the ServerSocket on the port " + port);
 		} catch (Exception e) {
-			 System.out.println("We are not able to create the obj for the ServerSocket on the port " + port);
+			System.out.println("We are not able to create the obj for the ServerSocket on the port " + port);
 		}
 
 		while(true) {
 			try {
 				Socket client = server.accept();
-                        	System.out.println("Client Address is : " + client.getRemoteSocketAddress());
-                        	Thread t  = new Thread(() -> handleClient(client));
-                        	t.start();
+                System.out.println("Client Address is : " + client.getRemoteSocketAddress());
+                Thread t  = new Thread(() -> handleClient(client));
+                t.start();
 			} catch (Exception e) {
 				System.out.println("Getting Error while accepting the connection.");
 			}
@@ -36,8 +36,8 @@ public class EchoServer {
 		) {
 			String line;
 			while ((line = in.readLine()) != null) {
-				System.out.println("Recieved This from Client : " + line);
-				out.println("Echo back : " + line);
+				System.out.println("Recieved This from Client : " + line); //This is seen in the system console output
+				out.println("Echo back : " + line); // Seen in the client output
 			}
 
 		} catch (Exception e) {
