@@ -91,3 +91,58 @@ std2 === thisInsideStudentS
 student.prototype.checkMarks = function() {
     return this.obtMarks;
 }
+
+
+//Based on Protypical Inheritance, this inside constructor func
+
+/** 
+ * Custom Map Implementation
+ * */ 
+// var arr1 = new Array(...[1,2,3,4]);   // ... is the spread operator that spreads the elements of the object
+// var doubledArray = arr1.map((item,index) => {
+//     return item *2;
+//  });
+
+var callBackMultiBy2 = (item, index) => {
+    return item * 2;
+}
+
+var arr1 = new Array(...[1,2,3,4]);   // ... is the spread operator that spreads the elements of the object
+var doubledArray = arr1.map(callBackMultiBy2);
+
+
+//Map func executes the operation, on each item in the array passed.
+
+var arr2 = [1,2,3,4,5,5];
+arr2.customMap(callBackMultiBy2);
+Array.prototype.customMap = function(callback) {
+    console.log(this);
+    let returnArr = [];
+    for(let i = 0; i < this.length; i++){
+        let callbackValue = callback(this[i]);
+        returnArr.push(callbackValue);
+    }
+
+    return returnArr;
+}
+
+// 2 cases why this doesnt work
+/**
+ * When one file is executed in defer mode and the function hasnt been defined before invoking/calling
+ * When one file has the implementation which has not been executed, another file calls this function */ 
+
+/**
+ * Custom forEach implementation
+ * @param {callback} cb - performs any operation on each item 
+ */
+Array.prototype.customForEach = function(cb) {
+  for (let i = 0; i < this.length; i++) {
+    cb(this[i]);   // har element pe callback chalana
+  }
+};
+
+let v1 = [1,2,3,4,5];
+
+v1.customForEach(function(x) {
+  console.log(x * 2);
+});
