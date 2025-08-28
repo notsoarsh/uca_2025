@@ -24,3 +24,14 @@ function sumAll(...items) {
 
 let totalSum = sumAll(3,4,5,6);
 console.log(totalSum);
+
+//rest operator for objects
+var studentList = {name: "name1", age: 20, college: "college1"};
+
+var {name, ...details} = studentList;
+
+function getProperties({name, ...details} ) {
+    console.log("name is ", name);
+    console.log("details are: ", details);
+}
+
