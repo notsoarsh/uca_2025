@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class InversionCounter {
+public class InversionCount {
 
   private static int merge(int[] arr, int low, int mid, int high) {
     ArrayList<Integer> temp = new ArrayList<>();
@@ -62,6 +62,6 @@ public class InversionCounter {
     int[] arr = {5, 4, 3, 2, 1};
     int n = arr.length;
     int count = numberOfInversions(arr, n);
-    System.out.println("The number of inversions is: " + count);
+    System.out.println("The number of inversions are: " + count);
   }
 }
