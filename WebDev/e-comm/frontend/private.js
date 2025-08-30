@@ -28,3 +28,13 @@ console.log(FName);
  * Private properties are the properties that are not accesible outside the class.
  * They are declared using a #,and even if we want to access the property we use a hash 
  */
+
+//static is a variable that is used to define class level variable
+//they are called using the className and dot operator
+// example
+// class ABC{ 
+//   static num = 10;
+// }
+// ABC.num;
+// at the time of accessing
+
