@@ -1,6 +1,6 @@
 
 
-public class MaxPriorityQueue<T> {
+public class MaxPriorityQueue<T> implements Comparator {
   private T[] pq;
   private int size;
   
