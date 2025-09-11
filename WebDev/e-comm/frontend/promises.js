@@ -49,3 +49,48 @@ promise1.catch((rejectedReturnValue) => {
 
 
 
+/////////////////////////////////////////////////////////////// 
+// Custom Promises 
+
+function customPromiseExecFunc(resolve, reject) {
+  setTimeout(() => {
+    console.log("Promise 1 executed")
+    resolve("Promise is fullfilled");
+    //reject("Promise rejected");
+  }, 5000);
+}
+function PromiseCustom(executorFunc) {
+  this.state = "pending";
+  let successCallback;
+  let failureCallback;
+  
+  this.then = function(callback) {
+    successCallback = callback; 
+  };
+  this.catch = function() {
+    failureCallback = callback;
+  };
+
+  executorFunc(
+    (response) => {
+      this.state = "fullfilled";
+      successCallback(response);
+    },
+    (error) => {
+      this.state = "rejected";
+      failureCallback(error);
+    }
+  );
+}
+
+var customPromise1 = new PromiseCustom(customPromiseExecFunc);
+
+customPromise1.then((resolvedReturnVal) => {
+  alert("Promise resolved with value " + resolvedReturnVal); 
+})
+
+customPromise1.catch((rejectedReturnValue) => {
+  alert("Promise rejected with value: " + rejectedReturnValue);
+})
+
+
