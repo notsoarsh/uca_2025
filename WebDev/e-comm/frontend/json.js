@@ -15,3 +15,4 @@ console.log(JSON.stringify(student));
 JSON.parse(localStorage.getItem(student));
 
 //when data is transferred over the network layer, it is sent as a string
+
