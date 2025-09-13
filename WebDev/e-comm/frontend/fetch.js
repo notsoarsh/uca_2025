@@ -53,3 +53,6 @@ data.then((response) => {
   console.log("Response from custom fetch is: ", response);
 });
 
+
+//try to implement sleep using promises
+

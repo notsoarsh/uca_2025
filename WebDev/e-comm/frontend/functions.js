@@ -9,6 +9,7 @@ var foo2 = function(param1){
 }
 
 //functional expression with arrow function
+//Arrow function ka apna kuch ni hota , (meaning this is refered to the parent)
 var foo3 = (param1) => {
     console.log("Inside foo3");
 }
