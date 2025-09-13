@@ -9,6 +9,7 @@ var studentObj1 = {
 
 }
 
+//literal means literally something
 
 var objUsingNewObj1 = new Object();  //creates an empty object
 var objUsingNewObj2 = new Object({name : "Arsh"});   
