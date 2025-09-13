@@ -18,3 +18,4 @@ JSON.parse(localStorage.getItem(student));
 
 //json is lightweight and better than xml as its lightweight and faster to parse
 
+//template literals are used for multiline strings
