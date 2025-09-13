@@ -16,3 +16,5 @@ JSON.parse(localStorage.getItem(student));
 
 //when data is transferred over the network layer, it is sent as a string
 
+//json is lightweight and better than xml as its lightweight and faster to parse
+
