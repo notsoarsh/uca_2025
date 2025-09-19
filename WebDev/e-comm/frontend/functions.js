@@ -29,10 +29,11 @@ function* scoreGen(initialScore) {
     let currentScore = initialScore; //returns an generator object iterator
     while(currentScore < 5) {
         currentScore += 1;
-        yield currentScore;   // we dont use return statement
+        yield currentScore;   // we dont use return statement & paused the function
     }
+    return currentScore;
 }
-
+//generator function returns an iterator
 const currentScore = scoreGen(0);
 console.log(currentScore.next());
 
