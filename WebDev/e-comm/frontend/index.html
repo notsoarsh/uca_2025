@@ -1,38 +1,43 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <!-- Head tag defines the dependencies that how the page is to be loaded -->
 <!--The line number 7 has a name attribute that is the name of the meta tag -->
 <!-- User scalable says that whether the usr can zoom or not -->
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>My Web Page</title>
     <link rel="stylesheet" href="css/styles.css" />
-    
-    <script type="text/jsx" src="script.js" defer></script>  
-    
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-<script src="data.js" async></script> 
+        <script src="data.js"></script>
+    <script type="text" src="script.js" defer></script>
+    <script type="text/jsx" src="rscript.js"></script>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+
     <!-- here we have to give the data.js so script can consume it-->
     <!-- we use defer here as well as we want that the ui is rendered before the products -->
     <!-- Here we put a defer keyword as the object is not yet found by the script-->
-     <!--Defer allows us to downlaod the js file but executed in the last -->
-     <!-- This helps us to handle the runtime errors -->
+    <!--Defer allows us to downlaod the js file but executed in the last -->
+    <!-- This helps us to handle the runtime errors -->
 </head>
+
 <body>
-    <div id="page-title"><header id="title">Welcome to eCommerce Website</header></div>  
+    <div id="page-title">
+        <header id="title">Welcome to eCommerce Website</header>
+    </div>
     <div id="myElement">
         List of products
     </div>
     <div id="tag2"></div>
-    <div id="data">
-        <div id="reactapp">
-            <scrip type ="text/jsx">
-                
-            </script>
-        </div>
+    <div id="data"></div>
+    <div id="reactapp">
     </div>
+
+
 </body>
+
 </html>

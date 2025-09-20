@@ -91,9 +91,8 @@ function renderProducts(){
 
 
 renderProducts();
-var app = document.getElementById("reactapp");
-var root = ReactDOM.createRoot(app);
-root.render(<h1>Hello From React</h1>); //this code is not html it is actually jsx code which browser cant understand , so we use a transpiler like babel to transpile this so browser can undertand
-//xhr - api typa shi
 
 
+
+
+// Any dom operation done using react should not be done on the dom directly

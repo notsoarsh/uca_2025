@@ -60,3 +60,11 @@ table, th ,tr , td {
     font-size: 30px;
     
 }
+
+#reactapp {
+    max-width: 100%;
+    background-color: yellow;
+    border : 2px red solid;
+    text-align : center;
+
+}
