@@ -18,7 +18,7 @@ function DescriptionComponent({name}) {  //here name is a destructured project
     <> 
     <h1>React managed code {name ?? "Guest User"} </h1>  
     <h5>This is website description</h5>  
-  </>
+    </>
   ); 
 }
 //we update the the virtual dom and react at runtime updates the delta of the dom
