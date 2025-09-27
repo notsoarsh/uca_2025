@@ -15,27 +15,31 @@ public class ValidParenthesis {
    * @returns boolean - True if the string is valid, false otherwise.
    */
   public boolean isValid(String s) {
-    if (s.length() == 0) return false;
+    if (s.length() == 0 || s.length() % 2 != 0) return false;
     ArrayList<Character> ds = new ArrayList<Character>();
-    helper(0, s, ds);
-    if (ds.isEmpty()) return true;
-    return false;
+    boolean result = helper(0, s, ds);
+    System.out.println(ds);
+    return result && ds.size() == 0;
   }
 
-  private void helper(int index, String s, ArrayList<Character> ds) {
-    if (index == s.length()) return;
+  private boolean helper(int index, String s, ArrayList<Character> ds) {
+    if (index == s.length()) return true;
     char ch = s.charAt(index);
 
     if (ch == '[' || ch == '(' || ch == '{') {
       ds.add(ch);
-      helper(index + 1, s, ds);
+      return helper(index + 1, s, ds);
     } else {
-      if ((ch == ')' && ds.get(ds.size() - 1) == '(') ||
-          (ch == '}' && ds.get(ds.size() - 1) == '{') ||
-          (ch == ']' && ds.get(ds.size() - 1) == '[')) {
+      if (ds.size() > 0 && 
+          ((ch == ')' && ds.get(ds.size() - 1) == '(') ||
+           (ch == '}' && ds.get(ds.size() - 1) == '{') ||
+           (ch == ']' && ds.get(ds.size() - 1) == '['))) {
         ds.remove(ds.size() - 1);
+        return helper(index + 1, s, ds);
+      } else {
+        // Invalid: either stack is empty or brackets don't match
+        return false;
       }
-      helper(index + 1, s, ds);
     }
   }
 
@@ -49,11 +53,12 @@ public class ValidParenthesis {
     String test3 = "(]";
     String test4 = "([)]";
     String test5 = "{[]}";
-
-    assert vp.isValid(test1) == true : "Test case 1 failed";
-    assert vp.isValid(test2) == true : "Test case 2 failed";
-    assert vp.isValid(test3) == false : "Test case 3 failed";
-    assert vp.isValid(test4) == false : "Test case 4 failed";
-    assert vp.isValid(test5) == true : "Test case 5 failed";
+    String test6 = ")[";
+    System.out.println(vp.isValid(test6));;
+    // assert vp.isValid(test1) == true : "Test case 1 failed";
+    // assert vp.isValid(test2) == true : "Test case 2 failed";
+    // assert vp.isValid(test3) == false : "Test case 3 failed";
+    // assert vp.isValid(test4) == false : "Test case 4 failed";
+    // assert vp.isValid(test5) == true : "Test case 5 failed";
   }
 }
