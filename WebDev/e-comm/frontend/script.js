@@ -88,9 +88,18 @@ function renderProducts(){
     
 }
 
-
-
+//Example for react vs js render
+let likes = 25;
+function renderDynamicComponent() {
+    
+    setTimeout(() => {
+        document.getElementById("dynamicTextComponent").innerHTML = `Likes - ${likes += 1}`;
+        renderDynamicComponent();
+    }, 5000);
+}
+renderDynamicComponent();
 renderProducts();
+
 
 
 
