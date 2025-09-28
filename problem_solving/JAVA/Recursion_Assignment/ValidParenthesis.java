@@ -1,4 +1,4 @@
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 
 public class ValidParenthesis {
@@ -18,7 +18,6 @@ public class ValidParenthesis {
     if (s.length() == 0 || s.length() % 2 != 0) return false;
     ArrayList<Character> ds = new ArrayList<Character>();
     boolean result = helper(0, s, ds);
-    System.out.println(ds);
     return result && ds.size() == 0;
   }
 
@@ -37,7 +36,6 @@ public class ValidParenthesis {
         ds.remove(ds.size() - 1);
         return helper(index + 1, s, ds);
       } else {
-        // Invalid: either stack is empty or brackets don't match
         return false;
       }
     }
