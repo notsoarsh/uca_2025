@@ -43,7 +43,7 @@ public class ConvertStringToInteger {
         return;
       }
 
-      ans[0] = ans[0] * 10 + (ch - 48);
+      ans[0] = ans[0] * 10 + (ch - 48); 
 
       helper(index + 1, s, ans);
     }
