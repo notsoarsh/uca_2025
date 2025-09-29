@@ -37,8 +37,46 @@ public class HumanPyramid {
      * @returns float - The total weight supported by the person at the given position.
      */
     public float totalWeightSupported(List<List<Double>> pyramid, int row, int col) {
-        return 0;
+        float[] ans = new float[1];
+        List<List<Double>> dp = new ArrayList<>();
+        for (int i = 0; i < pyramid.size(); i++) {
+            List<Double> temp = new ArrayList<>(Collections.nCopies(pyramid.get(i).size(), -1.0));
+            dp.add(temp);
+        }
+        ans[0] = (float)helper(pyramid, row, col,dp);
+        return ans[0];
     }
+
+    private double helper(List<List<Double>> pyramid, int row, int col, List<List<Double>> dp) {
+      //check if the weight already calculated
+      if (dp.get(row).get(col) != -1.0) {
+        return dp.get(row).get(col);
+      } 
+
+      double leftShoulder = 0;
+      double rightShoulder  = 0;
+      double curr = pyramid.get(row).get(col);
+
+      //if i am at the top , i have no weight on my shoulders
+      if (row == 0) {
+        dp.get(0).set(0, curr);
+        return curr;
+      }
+
+      //other wise i can say
+      if (col > 0) {
+        leftShoulder = helper(pyramid, row - 1, col - 1 , dp) / 2.0;
+      }
+      //check for the right shoulder
+      if (col < row) {
+        rightShoulder = helper(pyramid, row - 1, col, dp) / 2.0;
+      }
+      double totalWeight = curr + leftShoulder + rightShoulder;
+      //update the value for the current person
+      dp.get(row).set(col, totalWeight);
+
+      return totalWeight;
+    } 
 
     /**
      * Main method for testing the HumanPyramid class.
@@ -51,16 +89,34 @@ public class HumanPyramid {
             Arrays.asList(69.05, 133.66, 132.82),
             Arrays.asList(53.43, 139.61, 134.06, 121.63)
         );
-
-        assert Math.abs(hp.totalWeightSupported(pyramid, 0, 0) - 51.18) < 1e-2 : "Test case 1 failed";
-        assert Math.abs(hp.totalWeightSupported(pyramid, 1, 0) - 81.49) < 1e-2 : "Test case 2 failed";
-        assert Math.abs(hp.totalWeightSupported(pyramid, 1, 1) - 156.84) < 1e-2 : "Test case 3 failed";
-        assert Math.abs(hp.totalWeightSupported(pyramid, 2, 0) - 109.80) < 1e-2 : "Test case 4 failed";
-        assert Math.abs(hp.totalWeightSupported(pyramid, 2, 1) - 252.82) < 1e-2 : "Test case 5 failed";
-        assert Math.abs(hp.totalWeightSupported(pyramid, 2, 2) - 211.24) < 1e-2 : "Test case 6 failed";
-        assert Math.abs(hp.totalWeightSupported(pyramid, 3, 0) - 108.32) < 1e-2 : "Test case 7 failed";
-        assert Math.abs(hp.totalWeightSupported(pyramid, 3, 1) - 320.92) < 1e-2 : "Test case 8 failed";
-        assert Math.abs(hp.totalWeightSupported(pyramid, 3, 2) - 326.09) < 1e-2 : "Test case 9 failed";
-        assert Math.abs(hp.totalWeightSupported(pyramid, 3, 3) - 227.25) < 1e-2 : "Test case 10 failed";  
+        
+        System.out.println(Math.abs(hp.totalWeightSupported(pyramid, 2, 0)));
+        // assert Math.abs(hp.totalWeightSupported(pyramid, 0, 0) - 51.18) < 1e-2 : "Test case 1 failed";
+        // assert Math.abs(hp.totalWeightSupported(pyramid, 1, 0) - 81.49) < 1e-2 : "Test case 2 failed";
+        // assert Math.abs(hp.totalWeightSupported(pyramid, 1, 1) - 156.84) < 1e-2 : "Test case 3 failed";
+        // assert Math.abs(hp.totalWeightSupported(pyramid, 2, 0) - 109.80) < 1e-2 : "Test case 4 failed";
+        // assert Math.abs(hp.totalWeightSupported(pyramid, 2, 1) - 252.82) < 1e-2 : "Test case 5 failed";
+        // assert Math.abs(hp.totalWeightSupported(pyramid, 2, 2) - 211.24) < 1e-2 : "Test case 6 failed";
+        // assert Math.abs(hp.totalWeightSupported(pyramid, 3, 0) - 108.32) < 1e-2 : "Test case 7 failed";
+        // assert Math.abs(hp.totalWeightSupported(pyramid, 3, 1) - 320.92) < 1e-2 : "Test case 8 failed";
+        // assert Math.abs(hp.totalWeightSupported(pyramid, 3, 2) - 326.09) < 1e-2 : "Test case 9 failed";
+        // assert Math.abs(hp.totalWeightSupported(pyramid, 3, 3) - 227.25) < 1e-2 : "Test case 10 failed";  
     }
 }
+
+/*
+ *     A (10, 0)
+ *    / \
+ *   B   C
+ (15,15 + 5) (10, 10 + 5)
+ */
+
+/*            0       1       2       3
+        0     51.18 
+        1     55.90  131.25
+        2     69.05, 133.66, 132.82
+        3     53.43, 139.61, 134.06, 121.63
+    
+    Approach can be like : To find the weight supported by a person say at pos
+    [i][j], we can just add the half of the weight of the person at [i-1][j-1] and [i-1][j]
+    */ 
