@@ -19,7 +19,24 @@ public class SearchMatrix {
      * @returns boolean - True if target is found in the matrix, otherwise false.
      */
     public boolean searchMatrix(int[][] matrix, int target) {
-        return false;
+        return helper(0 , matrix[0].length - 1, matrix, target); 
+    }
+    
+    private boolean helper(int i, int j, int[][] matrix, int target) {
+       if (i == matrix.length || j < 0) {
+         return false;
+       }	       
+
+       //check if the target is equal to current
+       if (target == matrix[i][j]) {
+         return true;
+       }
+       else if (target < matrix[i][j]) {
+         //check in this row
+         return helper(i, j - 1, matrix, target); 
+       } else {
+         return helper(i + 1, j, matrix, target);
+       }
     }
 
     /**
