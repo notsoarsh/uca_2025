@@ -16,21 +16,26 @@ public class BST<Key extends Comparable<Key>, Value> {
 
   //Min key
   public Key min() {
+    return null;
   }
 
   //Max key
-  public Key min() {
+  public Key max() {
+    return null;
   }
   
   //Floor - largest number just smaller than given
   public Key floor(Key key) {
+    return null;
   }
   
   //Ceil - Smallest number just greater than given
   public Key ceil(Key key) {
+    return null;
   }
 
   public int rank(Key key) {
+    return 0;
   }
 
   //Get method
@@ -50,7 +55,7 @@ public class BST<Key extends Comparable<Key>, Value> {
   
   //Put method
   public void put(Key key, Value val) {
-    root = put(x, key, val);
+    root = put(root, key, val);
   }
   
   private Node put(Node x, Key key, Value val) {
@@ -73,7 +78,14 @@ public class BST<Key extends Comparable<Key>, Value> {
     bst.put(4, "Z");
     bst.put(7, "A");
 
-    assert 
+    assert bst.get(5).equals("A") : "Test failed for key 5";
+    assert bst.get(1).equals("X") : "Test failed for key 5";
+    assert bst.get(3).equals("Y") : "Test failed for key 5";
+    assert bst.get(4).equals("Z") : "Test failed for key 5";
+    assert bst.get(7).equals("A") : "Test failed for key 5";
+    assert bst.get(10) == null : "Test failed for key 10 , key missing";
+    
+    System.out.println("All test cases passed successfully");
     
   }
 }
