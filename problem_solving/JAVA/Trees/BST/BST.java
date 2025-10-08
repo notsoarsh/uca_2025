@@ -65,10 +65,11 @@ public class BST<Key extends Comparable<Key>, Value> {
   }
   
   private int rank(Node x, Key k) {
+    if (x == null) return 0;
     int cmp = k.compareTo(x.key);
-    if (cmp == 0) return sizeof(x.left);
     if (cmp < 0) return rank(x.left, k);
-    return 1 + sizeof(x.left) + rank(x.right, k);
+    else if (cmp > 0) return 1 + sizeof(x.left) + rank(x.right, k);
+    else return sizeof(x.left);
   }
 
   //Get method
@@ -103,7 +104,7 @@ public class BST<Key extends Comparable<Key>, Value> {
     if (cmp == 0) x.val = val; //overrite the key
     else if (cmp < 0) x.left = put(x.left, key, val);
     else x.right = put(x.right, key, val);
-    x.N += sizeof(x.left) + sizeof(x.right);    
+    x.N = 1 + sizeof(x.left) + sizeof(x.right);    
     return x;
   }
 
@@ -125,6 +126,6 @@ public class BST<Key extends Comparable<Key>, Value> {
     System.out.println(bst.min());
     System.out.println(bst.max());
     System.out.println("All test cases passed successfully");
-    System.out.println(rank(7)); 
+    System.out.println(bst.rank(7)); 
   }
 }
