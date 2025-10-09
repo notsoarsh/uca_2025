@@ -51,6 +51,7 @@ function App() {
     <LikesComponent/>
     <Likes2Component/>
     <ProductsComponenet/>
+    <FormComponent/>
     </div>
   )
 }
@@ -155,6 +156,36 @@ function Button(props) {
   )
 }
 
+
+function FormComponent(props) {
+  let tempVariable = React.useRef(10);
+  const [arr1, setArr1] = React.useState(["TextBox1", "TextBox2", "TextBox3"]);
+  function changeOrder() {
+    const updatedArr = [...arr1].reverse();
+    console.log(tempVariable);
+    tempVariable += 20;
+    setArr1(updatedArr);
+  }
+
+  // React.useEffect(() => {
+  //   fetchProductList();
+  // }, [arr1]);
+  return (
+  <div>
+    {
+      arr1.map((item) =>  {
+        return(
+        <div>
+        <input type="text" placeholder={item}></input>
+        </div>
+      )
+        
+      })}
+      <Button label="Change Order" clickBehavior={changeOrder}/>
+        <div>Hello World!</div>
+  </div>
+  )
+}
 function ProductsComponenet(props) {
   const [productList, setProductList] = React.useState([]);
   React.useEffect(() => {
@@ -246,19 +277,42 @@ function ProductsComponenet(props) {
 
 
 //Whenever we are rendering a list , always have a key property , that ensures uniqueness in sorting and other operations.
+//Key used to make the code work properly with React. React me jab updates krne data mei , tab index wala feature kam ata, kaise batch bnane.
+//LETS say ki list mei koi element uda diya , to react ko delta maintain kra to jis index pe change hua wo delta hoga
+
 
 // Jab inna kam React krvara browser se, to Client Site Rendering bahut heavy hoti, isliye react ne collab kiya Nextjs sath ki jo kam server side render ho wo hum server se render kre
 
 
 
+//How to get some value from child to parent... CALLBACK!!!!
+// function foo1() {
+//     let x = 20;
+//     let rValue;
+//     foo2(x, innerCallBack);
+//     function innerCallBack(arg2) {
+//         rValue = arg2;
+//     }
+//     console.log(rValue);
+// }
 
+// function foo2(arg1, innerCallBack) {
+//     console.log(arg1);
+//     innerCallBack(30);
+// }
 
+// foo1();
 
+// ************** PARENT 
+//                  |
+//                  |
+//                /   \                        LETS SAY WE WANT TO ACCESS DATA FROM CHILD1 TO CHILD 2 , WE USE                                              CALLBACKS TO UPDATE THE PARENT AND FROM THERE WE CAN ACCESS
+//              /       \
+//             /         \
+//           CHILD1       CHILD2
 
-
-
-
-
+//cmds for nextjs 
+// npx create-next-app@latest
 
 
 
