@@ -1,0 +1,72 @@
+When we want to install global dependencies use a -g flag along with npm
+
+//Public directory 
+Used for keeping the sharable files, say images, etc.
+
+//Eslint.config used for the fomatting and linitng for project
+
+//package.json contains the project configs, like scripts , dependencies
+
+//npx - node package executor
+
+//jsonconfig file mentions the path that says that we have an alias , for the root that has the compilable code
+
+
+//next.config.js - used for using internal features of nextjs
+
+//favicon- favourite icons , used for telling the hero icon and most of the framework understand
+
+
+//In the prev versions of nextjs there was an explicit index.html file but now it creates internally
+//Corresponding to the index file , we have *layout.js*, that serves as the entry point for project
+
+//next dev - builds the project and hosts it on a node server, build means it may transpile js code or create a server that runs the code
+
+//Jo folder bnaenge jisme page.js hoga , uska name will be used a 'route' and nextjs will try to find the page.js file
+
+//hum anchor tags use kr skte lekin this causes new call to server for rendering
+//SPA - Single page application
+
+//Hum 'children' ko change krre witht the component we want
+
+
+//PRE-FETCHING - 
+
+ What’s actually happening under the hood:
+
+When the page first loads:
+
+The server renders React Server Components (RSC) into a lightweight JSON format (Flight data).
+
+That data is used to generate HTML (SSR) for the first request.
+
+The browser hydrates the page.
+
+When you click a <Link> (client-side navigation):
+
+The browser sends a fetch request to the server for that route.
+
+The server returns Flight data (JSON) for only the changed parts of the component tree.
+
+The browser merges that into the existing React tree — no full reload.
+
+That’s why Next.js feels fast — it’s not sending entire HTML again, just structured JSON updates for the components.
+
+
+//External urls are not prefetched but internals can be
+
+Hydration (Browser side pr hta h)- server side render and client side render ko combine krke browser pe show kanra ui so that we get a consistent ui
+
+Pre-fetching -  Server side vala part krvalo when we are on a page , and when its requested to usko attach krdo csr se and ui mei render kvado
+// Since humne ssr ko pehle hi perform krdia to iss client side ki performance bad gyi kyuki sirf kam ui render krne ka reh gya hydration dwara
+uss page ki rendering nhi slow karega as rendering tabhi hogi jab link dikhnge and that would be after rendering
+uske baad load bhad jaega uspr due to prefetching on the initial render
+prefetching is just moving rendering part to an early stage
+
+//npm run build - runs the command in production mode rather than dev mode
+
+//When it is in dev mode , it compiles at runtime when required but when in production mode it compiles everything before
+
+//event handlers are browser events so it cant run on nodejs, so since server side requires node , it has to be rendered by browser , hence client side
+
+//useEffect is primarily client side
