@@ -1,66 +1,58 @@
-
-
-public class MaxPriorityQueue<T> implements Comparator {
-  private T[] pq;
-  private int size;
-  
-  public MaxPriorityQueue(int capacity) {
-    this.pq = (T []) new Object[capacity + 1];
-    this.size = 0;
-  }
-
-  public boolean isEmpty() {
-    return this.size == 0;
-  }
-
-  public int size() {
-    return this.size;
-  }
-
-  private void exchange(int i, int j) {
-    T temp = this.pq[i];
-    this.pq[i] = this.pq[j];
-    this.pq[j] = temp;
-  }
-
-  private boolean isLess(int i, int j) {
-    return ((Comparable<T>) this.pq[i]).compareTo(((T) this.pq[j])) < 0;
-  }
-
-  public void insert(T key) {
-    this.pq[++size] = key;
-    swim(size);
-  }
-
-  private void swim(int idx) {
-    while (idx > 1 && isLess(idx / 2, idx)) {
-      exchange(idx, idx / 2);
-      idx = idx / 2;
+public class MaxPriorityQueue<T extends Comparable<T>> {
+    private T[] heap;
+    private int size;
+    @SuppressWarnings("unchecked")
+    MaxPriorityQueue(int capacity) {
+        this.heap = (T[]) new Comparable[capacity + 1];
+        this.size = 0;
     }
-  }
-
-  public T deleteMax() {
-    T elem = this.pq[1];
-    exchange(1, size--);
-    sink(1);
-
-    return elem;
-  }
-
-  private void sink(int idx) {
-    while (2 * idx <= size) {
-      int j = 2 * idx;
-
-      if (j < size && isLess(j, j+1)) {
-        j++;
-      }
-      if (!isLess(idx, j)){
-        break;
-      }
-      exchange(idx, j);
-      idx = j;
+    
+    public int size() { return size; }
+    
+    public boolean isEmpty() { return size == 0; }
+    
+    public void insert(T key) {
+        heap[++size] = key;
+        swim(size);
     }
-  }
+    
+    private void swim(int child) {
+        while (child > 1 && isGreater(child, child / 2)) {
+            exchange(child, child / 2);
+            child /= 2;
+        }
+    }
+    
+    private boolean isGreater(int i, int j) {
+        return heap[i].compareTo(heap[j]) > 0;
+    }
+    
+    private void exchange(int i, int j) {
+        T temp = heap[i];
+        heap[i] = heap[j];
+        heap[j] = temp;
+    }
+    
+    public T delMax() {
+        if (isEmpty()) throw new IllegalStateException("Heap is empty");
+        T max = heap[1];
+        exchange(1, size--);
+        sink(1);
+        heap[size + 1] = null;
+        return max;
+    }
+    
+    private void sink(int p) {
+        while (2 * p <= size) {
+            int c = 2 * p;
+            if (c < size && isGreater(c + 1, c)) c++;
+            if (!isGreater(c, p)) break;
+            exchange(p, c);
+            p = c;
+        }
+    }
+}
+
 
   public static void main(String[] args) {
     MaxPriorityQueue<Integer> pq = new MaxPriorityQueue<Integer>(32);
