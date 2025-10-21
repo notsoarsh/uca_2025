@@ -18,7 +18,7 @@ public class HashTable<Key, Value> {
   private Node<Key, Value>[] ht;
 
   public HashTable() {
-    this.ht = (Node<key, val>[])new Node[M];
+    this.ht = (Node<Key, Value>[])new Node[M];
   }
   
   public int hash(Key key) {
@@ -33,10 +33,10 @@ public class HashTable<Key, Value> {
         return;
       }
     }
-    ht[i] = new Node<>(key, value, ht[i]);
+    ht[i] = new Node<>(key, val, ht[i]);
   }
 
-  public int get(Key key) {
+  public Value get(Key key) {
     int i = hash(key);
     for (Node<Key, Value> temp = ht[i]; temp != null; temp = temp.next) {
       if (temp.key.equals(key)) {
