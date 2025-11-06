@@ -70,3 +70,46 @@ prefetching is just moving rendering part to an early stage
 //event handlers are browser events so it cant run on nodejs, so since server side requires node , it has to be rendered by browser , hence client side
 
 //useEffect is primarily client side
+
+
+//nextjs is a framework and a library as well, which binds the complete process to provide ssr
+
+//how to create responsive web design - css media queries
+
+
+--------------CSS----------------
+
+CSS selectors Specificity
+
+p1 - pclass-abcd
+p2 - pclass-asdw
+p3 - pclass-wert
+
+//Here we are saying we allocate dynamic class names at run time - Bootstrap , Tailwind etc. , but this is not to be done !!!!!
+
+//margin can be negative padding can not be
+
+//Default export has to be one, but normal exports can be many but we need to use same name
+
+//Next js uses file based routing , where it calls different pages across the app in the main layout using the paths
+
+
+//jaha bhi we want to use a react hook, it has to be csr
+
+
+//Await is used for achieving sleep functionality , waits for the async code for being completed
+
+
+//We use suspense component of react if we want to show something before component render
+//it has a prop "fallback" - that defines what to show
+
+
+Server side rendering- 
+ - ON DEMAND + some caching  
+ - 2 types 
+ - With caching - 
+ -Without caching -
+ - PRE render -- For pages that are not often changed 
+
+- Jo bhi user interactive pages hote jisme client side kaam zyada hota, idhr CSR is better.
+
