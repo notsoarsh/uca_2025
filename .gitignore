@@ -49,3 +49,6 @@ tmp/
 # Cache directories
 .cache/
 .parcel-cache/
+
+#Zip
+./*.zip
