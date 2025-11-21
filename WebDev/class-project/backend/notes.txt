@@ -1,0 +1,26 @@
+**** Backend Development ***
+Nodejs - API Development
+- Using express as well
+
+- Response : 
+  - success (200, 201, 202, 2xx, 204-empty Response browser doesnt download)
+  - failure
+
+** 20 Nov Thursday **
+bson - Binary JSON , mongodb uses this to store
+
+Database are basically files only.
+
+//we dont necessarily want that we are making calls to the cache, we can store it in the memory ~ "caching"
+
+
+// in mongodb we call tables as Collections. *** 
+
+What is nodejs?
+At root level its basically a process/service running in the backend 
+
+//homework
+put and delete method to be completed in the index
+
+//middlewares in express
+  - if before being handled by the server , we want any function to be performed on the req , we use middlewares 

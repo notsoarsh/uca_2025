@@ -1,0 +1,8 @@
+{
+    "products" : [ 
+      {"id": 1, "name": "Play Station 5", "price": "499$", "tag": "top-seller", "image": "https://placehold.co/300x200"},
+      {"id": 2, "name": "Monitor", "price": "120$", "tag": "recommended", "image": "https://placehold.co/300x200"},
+      {"id": 3, "name": "Wired Keyboard", "price": "25$", "tag": "on-sale", "image": "https://placehold.co/300x200"},
+      {"id": 4, "name": "Desk Lamp", "price": "10$", "tag": "on-sale", "image": "https://placehold.co/300x200"}
+    ]   
+}
