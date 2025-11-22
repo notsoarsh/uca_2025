@@ -4,10 +4,24 @@ const fileSystem = require('fs'); //alias for fs module
 var bodyParser = require('body-parser');
 var app = express();
 
+
 var port = 5050;
 //converting the incoming the request body to json
 
 app.use(bodyParser.json());
+app.use("/*splat", function (req, res, next) { //sets the middleware, *splat -> all paths except root path,if we want root as well put *splat in bracket
+  //allow cors
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, PATCH, DELETE"
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Content-Type"
+  )
+  next();
+});
 
 app.get('/', (req, res) => {
   res.end("Hello world");
@@ -98,7 +112,7 @@ app.delete("/products/:id", (req, res) => {
   // Delete product by ID
   var productIdToDelete = req.params.id;
   //we will need to first readfile and find the object
-  fileSystem.readFile("./db.json", (error, data) => {
+  fileSystem.readFile("./db.json", "utf-8", (error, data) => {
     if (error) {
       return res.status(500).json({message: "Failed to read database"});
     }
@@ -106,7 +120,7 @@ app.delete("/products/:id", (req, res) => {
     var arrayOfPdts = dataFromDB.products;
     //now we need to find this object 
     arrayOfPdts = arrayOfPdts.map(pdt => 
-      pdt.id === productIdToDelete ? null : pdt
+      pdt.id === productIdToDelete ? null : pdt //should have used splice
     );
     dataFromDB.products = arrayOfPdts;
     fileSystem.writeFile('./db.json', JSON.stringify(dataFromDB), (error, data) => {
@@ -119,7 +133,18 @@ app.delete("/products/:id", (req, res) => {
     });
   });
 });
+///sample input : localhost:5050/products?id=3&name=newNAME
+/**put request for /products */
+app.put("/products", (req, res) => {  //this type is used when we want dynamic query params
+  //
+  let params = req.query;
+  let body = req.body;
+  console.log("PUT request query params: " , params);
+  console.log("PUT request body: ", body);
 
+  res.status(501).json({message : "Not implemented!"})
+
+})
 app.listen(port, () => {
   console.log(`Server is running on port http://localhost:${port}/`);
 });

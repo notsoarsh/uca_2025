@@ -33,7 +33,7 @@ export default async function Home() {
   console.log("Slept for 10 secs");
 
   //fetch - its a method we give url to and it makes a http req to the url and it returns a promise
-  const productsFromJServer = await fetch("http://localhost:5000/products", );
+  const productsFromJServer = await fetch("http://localhost:5050/products", );
   const productDataFromJServer = await productsFromJServer.json();  //we get productsFromJServer as a promise and this also needs to be awaited and json has t
   console.log("----------- Fetched produts from server : ", productDataFromJServer);
   // const products = [

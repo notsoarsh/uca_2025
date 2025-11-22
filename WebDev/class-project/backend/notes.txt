@@ -7,7 +7,7 @@ Nodejs - API Development
   - failure
 
 ** 20 Nov Thursday **
-bson - Binary JSON , mongodb uses this to store
+bson - Binary JSON , mongodb uses this to store(equivalent to json.stringify)
 
 Database are basically files only.
 
@@ -24,3 +24,24 @@ put and delete method to be completed in the index
 
 //middlewares in express
   - if before being handled by the server , we want any function to be performed on the req , we use middlewares 
+
+22 November - 
+  - Types of storage
+    - Database  
+    - File storage
+    - Web storage
+    - Peristent Data 
+
+  Why we dont use body with Delete api , as everypart of an api is performed by different things/ layers, and for them the definition is defined for the particular protocol .
+
+  ** GET request is by default cached
+  ** You may use PUT to create new Data, but dont do this when id is not known
+  ** Deserialisation - When data is converted from string to a format say JSON
+  ** Serialisation - object to stringify
+
+
+  writeFile - Async , writeFileSync - well self explanatory 
+
+  ****
+  arrayObj.findIndex((callback_param) => obj.prop = prop); returns the index for which the condition satisifies
+  ** cors error is a browser error - one domain tries to access data from another domain

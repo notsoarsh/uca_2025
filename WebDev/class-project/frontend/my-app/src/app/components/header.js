@@ -10,6 +10,9 @@ function Header() {
           <Button variant="primary">Login
             </Button>
           </Link>
+          <Link href="/addproduct">
+            <h2>Add product</h2>
+          </Link>
         </div>
     </header>
   );
