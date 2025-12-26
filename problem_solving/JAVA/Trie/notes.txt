@@ -1,0 +1,6 @@
+Data structure used for pattern matching, ip matching
+Stores value as key pair
+
+->
+-> Basically implemented as a N-array tree.
+-> Negative - High memory footprint.
