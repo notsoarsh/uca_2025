@@ -45,3 +45,16 @@ put and delete method to be completed in the index
   ****
   arrayObj.findIndex((callback_param) => obj.prop = prop); returns the index for which the condition satisifies
   ** cors error is a browser error - one domain tries to access data from another domain
+
+  // Database
+  how does data request move ? 
+  nodejs -> index.js -> routes(product.js) -> model -> Database
+
+  //mongoose provides functions, that allows ORMs (Object Relational Mapping), we dont need to practically write the schemea we can write code to access Database
+
+  //eg - db.find() - allows to write a code that runs the query
+  //Jab kahi mongoose import hoga and wo file kahi aur import hogi to mongoose ka ek hi instance use hoga sab alag ni bnenege
+
+  //Whenever we use mongoose, we need to create Model for the collection..-> technically hum kuch bhi rakh sakte as its json, but it doesnt mean we cant have restrictions, mongoose allows restrictions but doesnt enforce
+
+  <--Workin of mongoose-->

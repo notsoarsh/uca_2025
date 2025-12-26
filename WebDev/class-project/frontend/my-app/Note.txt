@@ -135,3 +135,25 @@ Defines the behavior that allows the communication between two parties
   
   -- OPTIONS :  ** always handled server side **
 -- Any request hit from the browser are by default - GET 
+
+// MongoDB
+-> No sql db
+-> Table is a Collection 
+-> Row is a Document
+-> Creating structure is not mandatory but can be created
+-> Types of data - Transactional,
+
+-- Mongo DB installation
+-- Mongo DB gui tool compass
+-- ORM : Object Relational Mapping - Used to map code to data 
+-- Moongoose connector to connect code to db 
+
+--MongoDB is in itself a service/server
+-- Client can be MondoDB shell , or mongod atlas 
+
+/* List if commands: 
+  - show dbs
+  - show collections
+  - use collections
+  - db (tells what current db is)
+  - by default 
