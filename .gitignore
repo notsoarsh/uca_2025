@@ -52,3 +52,9 @@ tmp/
 
 #Zip
 ./*.zip
+
+# MongoDB
+WebDev/dbData/
+*.bson
+*.wt
+*.log
