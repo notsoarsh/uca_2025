@@ -25,14 +25,23 @@ const productsSchema = new mongoose.Schema({
 
 const ProductModel = mongoose.model("Products", productsSchema);
 
-ProductModel.getAllProducts = async function() {
-  const data = await ProductModel.find({});
-  return data;
+ProductModel.getAllProducts = async function(successCallback, errorCallback) {
+  try {
+    const data = await ProductModel.find({});
+    successCallback(data);
+  } catch (error) {
+    errorCallback(error);
+  }
 }
 
-ProductModel.addNewProduct = async function (newProduct) {
-  const createdProduct = await ProductModel.insertOne(newProduct);
-  return createdProduct;
+ProductModel.addNewProduct = async function (newProduct, successCallback, errorCallback) {
+  try {
+    const createdProduct = await ProductModel.create(newProduct);
+    successCallback(createdProduct);
+  } catch (error) {
+    errorCallback(error);
+  }
+  
 }
 
 export default ProductModel;
