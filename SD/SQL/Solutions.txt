@@ -1,0 +1,32 @@
+1-> select title from Movie where director = "Steven Spielberg";
+2-> select ratingDate from Rating where stars >= 4 order by ratingDate asc;
+3-> select title from Movie m , Rating r where m.mID = r.mID
+and r.stars is NULL;
+4-> select name from Reviewer rv , Rating rt where rv.rID = r
+t.rID and rt.ratingDate is NULL;
+5-> select rv.name, m.title, rt.stars, rt.ratingDate from Movie m join Rating rt on m.mID = rt.mID join Reviewer rv on rv.rID =rt.rID order by rv.name asc, m.title asc, rt.stars asc;
+ ---- 
+6-> 
+SELECT rv.name, m.title FROM Reviewer rv JOIN Movie m
+WHERE EXISTS (
+    SELECT 1
+    FROM Rating r1
+    JOIN Rating r2
+      ON r1.rID = r2.rID
+     AND r1.mID = r2.mID
+    WHERE r1.rID = rv.rID
+      AND r1.mID = m.mID
+      AND r2.ratingDate > r1.ratingDate
+      AND r2.stars > r1.stars
+);
+--
+select m.title, max(rt.stars) as max_rating from Movie m, Rating rt on m.mID = rt.mID group by m.title order by m.title;
+
+8-> select m.title , rs.rating_spread  from Movie m join (select r.mID , MAX(r.stars) - MIN(r.stars) as rating_spread from Rating r group by r.mID) rs on m.mID = rs.mID;
+9-> 
+10-> select rv.name from Reviewer rv, Rating rt on rv.rID = rt.rID where rt.mID = (select mID from Movie where title = "Gone with the Wind");
+
+11-> select rv.name, m.title, rt.stars from Movie m join Reviewer rv on m.director = rv.name join Rating rt on rv.rID = rt.rID;
+
+12-> select rv.name from Reviewer rv union select m.title from  Movie m order by rv.name, m.title;
+13->select m.title from Movie m where not exists (select 1 from Rating rt join Reviewer rv on rt.rID = rv.rID where rt.mID = m.mID and rv.name= 'Chris Jackson');

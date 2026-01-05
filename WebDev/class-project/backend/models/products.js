@@ -44,6 +44,9 @@ ProductModel.addNewProduct = async function (newProduct, successCallback, errorC
   
 }
 
+ProductModel.addNewProduct = async function(newProduct) {
+  const data = 
+}
 export default ProductModel;
 
 // Your JS Code
